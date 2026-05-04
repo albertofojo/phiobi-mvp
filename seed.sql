@@ -1,0 +1,73 @@
+-- Seed data for assets table (Spanish stock market)
+-- Uses the TICKER.MC format for integration with TradingView screener
+-- Supports ON CONFLICT DO NOTHING to allow safe re-runs
+
+INSERT INTO public.assets (symbol, name, sector, market) VALUES
+-- IBEX 35
+('ITX.MC', 'Inditex', 'Consumo Discrecional', 'IBEX 35'),
+('SAN.MC', 'Banco Santander', 'Financiero', 'IBEX 35'),
+('IBE.MC', 'Iberdrola', 'Servicios Públicos', 'IBEX 35'),
+('BBVA.MC', 'BBVA', 'Financiero', 'IBEX 35'),
+('CABK.MC', 'CaixaBank', 'Financiero', 'IBEX 35'),
+('AENA.MC', 'Aena', 'Industrial', 'IBEX 35'),
+('TEF.MC', 'Telefónica', 'Telecomunicaciones', 'IBEX 35'),
+('FER.MC', 'Ferrovial', 'Industrial', 'IBEX 35'),
+('REP.MC', 'Repsol', 'Energía', 'IBEX 35'),
+('MTS.MC', 'ArcelorMittal', 'Materiales Básicos', 'IBEX 35'),
+('NTGY.MC', 'Naturgy', 'Servicios Públicos', 'IBEX 35'),
+('ACS.MC', 'ACS', 'Industrial', 'IBEX 35'),
+('ELE.MC', 'Endesa', 'Servicios Públicos', 'IBEX 35'),
+('IAG.MC', 'IAG', 'Industrial', 'IBEX 35'),
+('BKT.MC', 'Bankinter', 'Financiero', 'IBEX 35'),
+('ENG.MC', 'Enagás', 'Energía', 'IBEX 35'),
+('SAB.MC', 'Banco Sabadell', 'Financiero', 'IBEX 35'),
+('MAP.MC', 'Mapfre', 'Financiero', 'IBEX 35'),
+('ANA.MC', 'Acciona', 'Industrial', 'IBEX 35'),
+('GRF.MC', 'Grifols', 'Salud', 'IBEX 35'),
+('CLNX.MC', 'Cellnex Telecom', 'Telecomunicaciones', 'IBEX 35'),
+('RED.MC', 'Redeia', 'Servicios Públicos', 'IBEX 35'),
+('ROVI.MC', 'Laboratorios Rovi', 'Salud', 'IBEX 35'),
+('LOG.MC', 'Logista', 'Industrial', 'IBEX 35'),
+('FLUI.MC', 'Fluidra', 'Industrial', 'IBEX 35'),
+('MEL.MC', 'Meliá Hotels', 'Consumo Discrecional', 'IBEX 35'),
+('COL.MC', 'Inmobiliaria Colonial', 'Inmobiliario', 'IBEX 35'),
+('MRL.MC', 'Merlin Properties', 'Inmobiliario', 'IBEX 35'),
+('UNI.MC', 'Unicaja Banco', 'Financiero', 'IBEX 35'),
+('Sacyr.MC', 'Sacyr', 'Industrial', 'IBEX 35'), -- SCYR.MC actually
+('SCYR.MC', 'Sacyr', 'Industrial', 'IBEX 35'),
+('ACX.MC', 'Acerinox', 'Materiales Básicos', 'IBEX 35'),
+('PUIG.MC', 'Puig', 'Consumo Básico', 'IBEX 35'),
+
+-- Mercado Continuo (Principales)
+('CIE.MC', 'CIE Automotive', 'Consumo Discrecional', 'Continuo'),
+('VID.MC', 'Vidrala', 'Materiales Básicos', 'Continuo'),
+('CAF.MC', 'CAF', 'Industrial', 'Continuo'),
+('ALB.MC', 'Corporación Alba', 'Financiero', 'Continuo'),
+('VIS.MC', 'Viscofan', 'Consumo Básico', 'Continuo'),
+('FDR.MC', 'Faes Farma', 'Salud', 'Continuo'),
+('NHH.MC', 'NH Hotel Group', 'Consumo Discrecional', 'Continuo'),
+('DIA.MC', 'DIA', 'Consumo Básico', 'Continuo'),
+('OHLA.MC', 'OHLA', 'Industrial', 'Continuo'),
+('GCO.MC', 'Grupo Catalana Occidente', 'Financiero', 'Continuo'),
+('EBR.MC', 'Ebro Foods', 'Consumo Básico', 'Continuo'),
+('PHM.MC', 'PharmaMar', 'Salud', 'Continuo'),
+('EDR.MC', 'eDreams ODIGEO', 'Consumo Discrecional', 'Continuo'),
+('TL5.MC', 'Mediaset España (Telecinco)', 'Servicios de Comunicación', 'Continuo'),
+('TRE.MC', 'Técnicas Reunidas', 'Energía', 'Continuo'),
+('TUB.MC', 'Tubacex', 'Materiales Básicos', 'Continuo'),
+('ENC.MC', 'Ence', 'Materiales Básicos', 'Continuo'),
+('TAL.MC', 'Talgo', 'Industrial', 'Continuo'),
+('APAM.MC', 'Aperam', 'Materiales Básicos', 'Continuo'),
+
+-- BME Growth (Principales)
+('LLE.MC', 'Lleida.net', 'Tecnología', 'BME Growth'),
+('AGIL.MC', 'Agile Content', 'Tecnología', 'BME Growth'),
+('GIG.MC', 'Gigas Hosting', 'Tecnología', 'BME Growth'),
+('COM.MC', 'Tier1 Technology', 'Tecnología', 'BME Growth'),
+('HLZ.MC', 'Holaluz', 'Servicios Públicos', 'BME Growth'),
+('TR1.MC', 'Tier1', 'Tecnología', 'BME Growth'),
+('MAB.MC', 'MAB', 'Servicios Financieros', 'BME Growth'),
+('EIDF.MC', 'EiDF Solar', 'Energía', 'BME Growth'),
+('ADL.MC', 'ADL Bionatur', 'Salud', 'BME Growth'),
+('ATRY.MC', 'Atrys Health', 'Salud', 'BME Growth')
+ON CONFLICT (symbol) DO NOTHING;
