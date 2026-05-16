@@ -1,0 +1,77 @@
+-- Seed script para poblar la tabla assets con las empresas del mercado español
+-- Incluye IBEX 35, Mercado Continuo y BME Growth usando el formato TICKER.MC
+
+INSERT INTO public.assets (symbol, name, sector, market) VALUES
+-- IBEX 35
+('ITX.MC', 'Inditex', 'Consumo Discrecional', 'IBEX 35'),
+('IBE.MC', 'Iberdrola', 'Utilities', 'IBEX 35'),
+('SAN.MC', 'Banco Santander', 'Financiero', 'IBEX 35'),
+('BBVA.MC', 'BBVA', 'Financiero', 'IBEX 35'),
+('CABK.MC', 'CaixaBank', 'Financiero', 'IBEX 35'),
+('AENA.MC', 'Aena', 'Industriales', 'IBEX 35'),
+('AMS.MC', 'Amadeus', 'Tecnología', 'IBEX 35'),
+('TEF.MC', 'Telefónica', 'Telecomunicaciones', 'IBEX 35'),
+('REP.MC', 'Repsol', 'Energía', 'IBEX 35'),
+('CLNX.MC', 'Cellnex', 'Telecomunicaciones', 'IBEX 35'),
+('NAT.MC', 'Naturgy', 'Utilities', 'IBEX 35'),
+('ELE.MC', 'Endesa', 'Utilities', 'IBEX 35'),
+('RED.MC', 'Redeia', 'Utilities', 'IBEX 35'),
+('ENG.MC', 'Enagás', 'Utilities', 'IBEX 35'),
+('BKT.MC', 'Bankinter', 'Financiero', 'IBEX 35'),
+('SAB.MC', 'Banco Sabadell', 'Financiero', 'IBEX 35'),
+('MAP.MC', 'Mapfre', 'Financiero', 'IBEX 35'),
+('ACS.MC', 'ACS', 'Industriales', 'IBEX 35'),
+('ANA.MC', 'Acciona', 'Industriales', 'IBEX 35'),
+('ANE.MC', 'Acciona Energía', 'Utilities', 'IBEX 35'),
+('GRF.MC', 'Grifols', 'Salud', 'IBEX 35'),
+('COL.MC', 'Inmobiliaria Colonial', 'Real Estate', 'IBEX 35'),
+('MRL.MC', 'Merlin Properties', 'Real Estate', 'IBEX 35'),
+('FDR.MC', 'Fluidra', 'Industriales', 'IBEX 35'),
+('SLRS.MC', 'Solaria', 'Energía', 'IBEX 35'),
+('ACX.MC', 'Acerinox', 'Materiales Básicos', 'IBEX 35'),
+('LOG.MC', 'Logista', 'Industriales', 'IBEX 35'),
+('UNI.MC', 'Unicaja Banco', 'Financiero', 'IBEX 35'),
+('MEL.MC', 'Meliá Hotels', 'Consumo Discrecional', 'IBEX 35'),
+('SCYR.MC', 'Sacyr', 'Industriales', 'IBEX 35'),
+('IAG.MC', 'IAG', 'Consumo Discrecional', 'IBEX 35'),
+('ROVI.MC', 'Laboratorios Rovi', 'Salud', 'IBEX 35'),
+('CIE.MC', 'CIE Automotive', 'Consumo Discrecional', 'IBEX 35'),
+('VIS.MC', 'Viscofan', 'Consumo Defensivo', 'IBEX 35'),
+('FER.MC', 'Ferrovial', 'Industriales', 'IBEX 35'),
+
+-- Mercado Continuo
+('EBRO.MC', 'Ebro Foods', 'Consumo Defensivo', 'Mercado Continuo'),
+('VID.MC', 'Vidrala', 'Materiales Básicos', 'Mercado Continuo'),
+('GEST.MC', 'Gestamp', 'Consumo Discrecional', 'Mercado Continuo'),
+('CAF.MC', 'CAF', 'Industriales', 'Mercado Continuo'),
+('ALM.MC', 'Almirall', 'Salud', 'Mercado Continuo'),
+('ENC.MC', 'Ence', 'Materiales Básicos', 'Mercado Continuo'),
+('TLGO.MC', 'Talgo', 'Industriales', 'Mercado Continuo'),
+('PHM.MC', 'PharmaMar', 'Salud', 'Mercado Continuo'),
+('DIA.MC', 'Dia', 'Consumo Defensivo', 'Mercado Continuo'),
+('TUB.MC', 'Tubacex', 'Industriales', 'Mercado Continuo'),
+('OHLA.MC', 'OHLA', 'Industriales', 'Mercado Continuo'),
+('TRE.MC', 'Técnicas Reunidas', 'Industriales', 'Mercado Continuo'),
+('PRM.MC', 'Prim', 'Salud', 'Mercado Continuo'),
+('CASH.MC', 'Prosegur Cash', 'Industriales', 'Mercado Continuo'),
+('PSG.MC', 'Prosegur', 'Industriales', 'Mercado Continuo'),
+('APPS.MC', 'Applus+', 'Industriales', 'Mercado Continuo'),
+
+-- BME Growth
+('LLE.MC', 'Lleida.net', 'Tecnología', 'BME Growth'),
+('GIG.MC', 'Gigas Hosting', 'Tecnología', 'BME Growth'),
+('IZER.MC', 'Izertis', 'Tecnología', 'BME Growth'),
+('HLZ.MC', 'Holaluz', 'Utilities', 'BME Growth'),
+('ART.MC', 'Arteche', 'Industriales', 'BME Growth'),
+('SNG.MC', 'Soluciones Cuatroochenta', 'Tecnología', 'BME Growth'),
+('CCOM.MC', 'Catenon', 'Industriales', 'BME Growth'),
+('TR1.MC', 'Tier1 Technology', 'Tecnología', 'BME Growth'),
+('NXT.MC', 'Netex', 'Tecnología', 'BME Growth'),
+('EIDF.MC', 'EiDF Solar', 'Energía', 'BME Growth')
+
+ON CONFLICT (symbol) DO UPDATE
+SET
+  name = EXCLUDED.name,
+  sector = EXCLUDED.sector,
+  market = EXCLUDED.market,
+  updated_at = TIMEZONE('utc'::text, NOW());
