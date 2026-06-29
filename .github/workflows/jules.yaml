@@ -1,0 +1,19 @@
+name: Google Jules Automation
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  jules_task:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Invocar a Jules (Solo usuarios autorizados)
+        # Añade esta condición para validar el autor antes de que Jules se ejecute
+        if: contains(fromJSON('["albertofojo", "socio-de-confianza"]'), github.actor)
+        uses: google-labs-code/jules-action@v1
+        with:
+          api-key: ${{ secrets.JULES_API_KEY }}
