@@ -5,6 +5,12 @@
     "clsx": "^2.1.1",
     "lightweight-charts": "^5.2.0",
     "lucide-react": "^1.14.0",
+    "node-fetch": "^2.7.0",
     "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
   }
 }
