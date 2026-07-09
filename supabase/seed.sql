@@ -1,0 +1,77 @@
+-- Seed data for Spanish market assets (IBEX 35, Mercado Continuo, BME Growth)
+-- Format: TICKER.MC
+-- Resolves conflicts by updating fields to ensure idempotency.
+
+INSERT INTO public.assets (symbol, name, sector, market) VALUES
+-- IBEX 35
+('ITX.MC', 'Inditex', 'Consumo Discrecional', 'IBEX 35'),
+('SAN.MC', 'Banco Santander', 'Financiero', 'IBEX 35'),
+('BBVA.MC', 'BBVA', 'Financiero', 'IBEX 35'),
+('IBE.MC', 'Iberdrola', 'Energía', 'IBEX 35'),
+('CABK.MC', 'CaixaBank', 'Financiero', 'IBEX 35'),
+('AENA.MC', 'Aena', 'Infraestructuras', 'IBEX 35'),
+('FER.MC', 'Ferrovial', 'Infraestructuras', 'IBEX 35'),
+('AMS.MC', 'Amadeus IT Group', 'Tecnología', 'IBEX 35'),
+('TEF.MC', 'Telefónica', 'Telecomunicaciones', 'IBEX 35'),
+('REP.MC', 'Repsol', 'Energía', 'IBEX 35'),
+('NTGY.MC', 'Naturgy', 'Energía', 'IBEX 35'),
+('ELE.MC', 'Endesa', 'Energía', 'IBEX 35'),
+('ACS.MC', 'ACS', 'Infraestructuras', 'IBEX 35'),
+('IAG.MC', 'IAG', 'Transporte', 'IBEX 35'),
+('RED.MC', 'Redeia', 'Energía', 'IBEX 35'),
+('SAB.MC', 'Banco Sabadell', 'Financiero', 'IBEX 35'),
+('BKT.MC', 'Bankinter', 'Financiero', 'IBEX 35'),
+('MAP.MC', 'Mapfre', 'Financiero', 'IBEX 35'),
+('ENG.MC', 'Enagás', 'Energía', 'IBEX 35'),
+('GRF.MC', 'Grifols', 'Salud', 'IBEX 35'),
+('ANA.MC', 'Acciona', 'Infraestructuras', 'IBEX 35'),
+('LOG.MC', 'Logista', 'Transporte', 'IBEX 35'),
+('ROVI.MC', 'Laboratorios Rovi', 'Salud', 'IBEX 35'),
+('UNI.MC', 'Unicaja Banco', 'Financiero', 'IBEX 35'),
+('ACX.MC', 'Acerinox', 'Industria', 'IBEX 35'),
+('MTS.MC', 'ArcelorMittal', 'Industria', 'IBEX 35'),
+('FDR.MC', 'Fluidra', 'Industria', 'IBEX 35'),
+('COL.MC', 'Inmobiliaria Colonial', 'Inmobiliaria', 'IBEX 35'),
+('MRL.MC', 'Merlin Properties', 'Inmobiliaria', 'IBEX 35'),
+('MEL.MC', 'Meliá Hotels', 'Turismo', 'IBEX 35'),
+('SCYR.MC', 'Sacyr', 'Infraestructuras', 'IBEX 35'),
+('CLNX.MC', 'Cellnex Telecom', 'Telecomunicaciones', 'IBEX 35'),
+('IDR.MC', 'Indra Sistemas', 'Tecnología', 'IBEX 35'),
+('PUIG.MC', 'Puig', 'Consumo Discrecional', 'IBEX 35'),
+
+-- Mercado Continuo
+('ALM.MC', 'Almirall', 'Salud', 'Continuo'),
+('CAF.MC', 'CAF', 'Industria', 'Continuo'),
+('CIE.MC', 'CIE Automotive', 'Industria', 'Continuo'),
+('DIA.MC', 'Dia', 'Consumo Básico', 'Continuo'),
+('EBRO.MC', 'Ebro Foods', 'Consumo Básico', 'Continuo'),
+('EDR.MC', 'eDreams ODIGEO', 'Turismo', 'Continuo'),
+('ENC.MC', 'Ence', 'Industria', 'Continuo'),
+('FAE.MC', 'Faes Farma', 'Salud', 'Continuo'),
+('GCO.MC', 'Grupo Catalana Occidente', 'Financiero', 'Continuo'),
+('OHLA.MC', 'OHLA', 'Infraestructuras', 'Continuo'),
+('PHM.MC', 'PharmaMar', 'Salud', 'Continuo'),
+('PSG.MC', 'Prosegur', 'Servicios', 'Continuo'),
+('TLGO.MC', 'Talgo', 'Industria', 'Continuo'),
+('TUB.MC', 'Tubacex', 'Industria', 'Continuo'),
+('VID.MC', 'Vidrala', 'Industria', 'Continuo'),
+('VIS.MC', 'Viscofan', 'Consumo Básico', 'Continuo'),
+('TRE.MC', 'Técnicas Reunidas', 'Ingeniería', 'Continuo'),
+('PRM.MC', 'Prisa', 'Medios', 'Continuo'),
+
+-- BME Growth
+('LLE.MC', 'Lleida.net', 'Tecnología', 'BME Growth'),
+('AGIL.MC', 'Agile Content', 'Tecnología', 'BME Growth'),
+('EIDF.MC', 'EiDF Solar', 'Energía', 'BME Growth'),
+('GIG.MC', 'Gigas Hosting', 'Tecnología', 'BME Growth'),
+('HLZ.MC', 'Holaluz', 'Energía', 'BME Growth'),
+('TR1.MC', 'Tier1 Technology', 'Tecnología', 'BME Growth'),
+('IZT.MC', 'Izertis', 'Tecnología', 'BME Growth'),
+('CCOM.MC', 'Making Science', 'Tecnología', 'BME Growth'),
+('SNG.MC', 'SNGULAR', 'Tecnología', 'BME Growth'),
+('ELZ.MC', 'Endurance Motive', 'Industria', 'BME Growth')
+ON CONFLICT (symbol) DO UPDATE
+SET
+  name = EXCLUDED.name,
+  sector = EXCLUDED.sector,
+  market = EXCLUDED.market;
